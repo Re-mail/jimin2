@@ -24,6 +24,7 @@ SECRET_KEY = 'django-insecure-clnptjy3+e)i#kp0^h5e090h3ll1z)np!ehah1!xng@fy0mht@
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False 실 서버 배포시 변경
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'user',
+    'remailbox',
+    'mypage',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +126,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/remailbox/'
+
+AUTH_USER_MODEL = "user.User" 

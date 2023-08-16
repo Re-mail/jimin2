@@ -1,21 +1,57 @@
 {% extends 'home/index.html' %}
 
-{% block contents %}
-<div>sign up page</div>
-
-<form action="" method="POST">
-    {% csrf_token %}
-
-    {% for form in forms %}
-    <div>
-        <label for = "{{ form.id_for_label }}">{{ form.label }}</label>
-        {{ form }}
-    </div>
-    {% endfor %}
-
-    {% if error %}
-    {{error}}
-    {% endif %}
-    <button type="submit" name="register-submit" value="register">제출</button>
-</form>
-{% endblock contents %}
+    {% block contents %}
+        <div class="container my-3">
+            <form method="post" action="{% url 'user:register' %}">
+                {% csrf_token %}
+                <h1 class="h3 mb-3 fw-norma">회원가입</h1>
+                <div class="mb-3">
+                    <label for="username">닉네임</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="nikname">
+                    {% if data == "id_overlap" %}
+                        <div class="alert alert-danger">
+                            <strong>Fail!</strong> 이미 존재하는 닉네임입니다.
+                        </div>
+                    {% endif %}
+                    {% if data == "id_too" %}
+                        <div class="alert alert-danger">
+                            <strong>Fail!</strong> 닉네임의 길이는 2~20자여야 합니다.
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="password1">비밀번호</label>
+                    <input type="password" class="form-control" name="password1" id="password1" placeholder="password">
+                    {% if data == "password_too" %}
+                        <div class="alert alert-danger">
+                            <strong>Fail!</strong> 비밀번호의 길이는 5~15자여야 합니다.
+                        </div>
+                    {% elif data == "check_wrong_combination" %} 
+                        <div class="alert alert-danger">
+                            <strong>Fail!</strong> 비밀번호 조합규칙에 맞지 않습니다. 3종 이상 문자로 구성된 8자리 이상 비밀번호를 입력해주세요
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="password2">비밀번호 확인</label>
+                    <input type="password" class="form-control" name="password2" id="password2" placeholder="check password">
+                    {% if data == "check_not_same" %}
+                        <div class="alert alert-danger">
+                            <strong>Fail!</strong> 비밀번호와 비밀번호 확인이 다릅니다.
+                        </div>
+                    
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="email">이메일</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="email">
+                    {% if data == "email_overlap" %}
+                        <div class="alert alert-danger">
+                            <strong>Fail!</strong> 이미 가입된 이메일입니다.
+                        </div>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary">생성하기</button>
+            </form>
+        </div>
+    {% endblock contents %}
