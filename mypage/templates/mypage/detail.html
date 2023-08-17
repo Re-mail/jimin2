@@ -1,12 +1,5 @@
 {% extends 'mypage/mypage.html' %}
 {% block mypage_section %}
-<!-- Nav -->
-<nav style="float: left;">
-   <ul id="table">
-      <li><a href="http://127.0.0.1:8000/mypage" style="background-color: rgb(100, 175, 138);">계정 관리</a></li>
-      <li><a href="http://127.0.0.1:8000/mypage/new_address">remail 생성</a></li>
-   </ul>
-</nav>
    <!-- Section -->
    <section>
       <div id="user">
@@ -21,12 +14,12 @@
       </div>
       <hr>
       <div id="poll">
-         <h3><a href="http://127.0.0.1:8000/mypage/polls">다른 설문조사 선택하기</a></h3>
+         <h3><a href="http://127.0.0.1:8000/mypage/polls">설문조사 페이지</a></h3>
          <p>{{q.question_text}}</p>
          <form method="POST" action="{% url 'vote' %}">
             {% csrf_token %}
             {% for c in q.choice_set.all %}
-            <div id="pol">
+            <div>
                <input type="radio" name="question" value="{{c.id}}">
                <label>{{c.choice_text}}</label>
                <br>

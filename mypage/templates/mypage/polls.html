@@ -1,13 +1,6 @@
 {% extends 'mypage/mypage.html' %}
       
 {% block mypage_section %}
-<!-- Nav -->
-<nav style="float: left;">
-   <ul id="table">
-      <li><a href="http://127.0.0.1:8000/mypage" style="background-color: rgb(100, 175, 138);">계정 관리</a></li>
-      <li><a href="http://127.0.0.1:8000/mypage/new_address">remail 생성</a></li>
-   </ul>
-</nav>
 <!-- Section -->
 <section>
    <div id="user">
@@ -22,18 +15,18 @@
    </div>
    <hr>
    <div id="poll">
-   {% if message == "complete" %}
-      <strong>설문에 응해주셔서 감사합니다!</strong> 
-      <h3><a href="http://127.0.0.1:8000/mypage">계정 관리로 돌아가기</a></h3>
-   {% endif %}
-      <h3><a href="http://127.0.0.1:8000/mypage/polls">설문조사 선택</a></h3>
+      <h3><a href="http://127.0.0.1:8000/mypage/polls">설문조사 페이지</a></h3>
       <table>
          {% for q in question %}
          <tr>
+            <td>{{q.id}}</td>
             <td><a href="http://127.0.0.1:8000/mypage/polls/{{q.id}}">{{q.question_text}}</a></td>
          </tr>
          {% endfor %}
       </table>
+   {% if message == "complete" %}
+      <strong>설문에 응해주셔서 감사합니다!</strong> 
+   {% endif %}
    </div>
 </section>
 {% endblock mypage_section %}

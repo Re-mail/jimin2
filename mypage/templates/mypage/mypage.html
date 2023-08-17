@@ -21,15 +21,15 @@
             </div>
             </div>
       </header>
-      {% block mypage_section %}
+
       <!-- Nav -->
       <nav style="float: left;">
          <ul id="table">
-            <li><a href="http://127.0.0.1:8000/mypage" style="background-color: rgb(100, 175, 138);">계정 관리</a></li>
+            <li><a href="http://127.0.0.1:8000/mypage">계정 관리</a></li>
             <li><a href="http://127.0.0.1:8000/mypage/new_address">remail 생성</a></li>
          </ul>
       </nav>
-      
+      {% block mypage_section %}
       <!-- Section -->
       <section>
            <div id="user">
