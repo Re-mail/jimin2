@@ -18,18 +18,20 @@
             </div>
             <div style="float: right;" id="header-profile" >
                <img src="{% static 'mypage/images/free-icon-profile-6522516.png' %}" style="width: 50px;"><a href="http://127.0.0.1:8000/mypage" style="margin: 0px 15px 0px 10px; text-decoration: none;">{{ request.user.username }}</a>
+               <div class='button'><a href="{% url 'user:logout' %}">logout</a></div>
             </div>
             </div>
       </header>
-
+      {% block mypage_section %}
       <!-- Nav -->
       <nav style="float: left;">
          <ul id="table">
-            <li><a href="http://127.0.0.1:8000/mypage">계정 관리</a></li>
+            <li><a href="http://127.0.0.1:8000/mypage" style="background-color: rgb(100, 175, 138);">계정 관리</a></li>
             <li><a href="http://127.0.0.1:8000/mypage/new_address">remail 생성</a></li>
+            <li><a href="http://127.0.0.1:8000/mypage/polls">설문조사</a></li>
          </ul>
       </nav>
-      {% block mypage_section %}
+      
       <!-- Section -->
       <section>
            <div id="user">
@@ -40,7 +42,51 @@
                   <br>
                   <span>{{ request.user.email}}</span>
                </div>
-              
+               <div id="list">
+                  <form method="POST" action="{% url 'mypage' %}">
+                     {% csrf_token %}
+                     <input type="hidden" name="number" id="number" value="1">
+                     <button type="submit">보기</button>
+                     <button type="submit">삭제</button>
+                     <div>
+                        <span>{{ctgr1}}</span> 
+                        <span>{{add1}}</span>
+                     </div>
+                  </form>
+                  <form method="POST" action="{% url 'mypage' %}">
+                     {% csrf_token %}
+                     <input type="hidden" name="number" id="number" value="2">
+                     <button type="submit">보기</button>
+                     <button type="submit">삭제</button>
+                     <span>{{ctgr2}}</span> 
+                     <span>{{add2}}</span>
+                  </form>
+                  <form method="POST" action="{% url 'mypage' %}">
+                     {% csrf_token %}
+                     <input type="hidden" name="number" id="number" value="3">
+                     <button type="submit">보기</button>
+                     <button type="submit">삭제</button>
+                     <span>{{ctgr3}}</span> 
+                     <span>{{add3}}</span>
+                  </form>
+                  <form method="POST" action="{% url 'mypage' %}">
+                     {% csrf_token %}
+                     <input type="hidden" name="number" id="number" value="4">
+                     <button type="submit">보기</button>
+                     <button type="submit">삭제</button>
+                     <span>{{ctgr4}}</span> 
+                     <span>{{add4}}</span>
+                  </form>
+                  <form method="POST" action="{% url 'mypage' %}">
+                     {% csrf_token %}
+                     <input type="hidden" name="number" id="number" value="5">
+                     <button type="submit">보기</button>
+                     <button type="submit">삭제</button>
+                     <span>{{ctgr5}}</span> 
+                     <span>{{add5}}</span>
+                  </form>
+                  
+               </div>
            </div>
            <hr>
            <div id="poll">

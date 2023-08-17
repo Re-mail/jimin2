@@ -5,39 +5,65 @@ from django.http.response import HttpResponseRedirect
 from django.urls import reverse
 
 def mypage(request):
-    try:
-        user = request.user
-        remail_instance, created = Remail.objects.get_or_create(user=user)
-        
-        if remail_instance.remail1:
-            address1 = "none"
-        else:
-            address1 = remail_instance.remail1
-            
-        if remail_instance.remail2:
-            address2 = "none"
-        else:
-            address2 = remail_instance.remail2
-            
-        if remail_instance.remail3:
-            address3 = "none"
-        else:
-            address3 = remail_instance.remail3
-            
-        if remail_instance.remail4:
-            address4 = "none"
-        else:
-            address4 = remail_instance.remail4
-            
-        if remail_instance.remail5:
-            address5 = "none"
-        else:
-            address5 = remail_instance.remail5
-            
-        return render(request,'mypage/mypage.html', {'add1':address1})
+    if request.method == 'GET':
+        return render(request, 'mypage/mypage.html')
     
-    except:
-        return render(request,'mypage/mypage.html')
+    elif request.method == 'POST':
+        try:
+            user = request.user
+            remail_instance, created = Remail.objects.get_or_create(user=user)
+            number = request.POST.get('number')
+            
+            if number == "1":
+                if remail_instance.remail1:
+                    address = remail_instance.remail1
+                    cate = remail_instance.category1
+                    
+                    return render(request,'mypage/mypage.html', {'add1':address,'ctgr1':cate })
+                else:
+                    address = 'none'
+                    return render(request,'mypage/mypage.html', {'add1':address})
+                
+            if number == "2":
+                if remail_instance.remail2:
+                    address = remail_instance.remail2
+                    cate = remail_instance.category2
+                    
+                    return render(request,'mypage/mypage.html', {'add2':address,'ctgr2':cate})
+                else:
+                    address = 'none'
+                    return render(request,'mypage/mypage.html', {'add2':address})
+                
+            if number == "3":
+                if remail_instance.remail3:
+                    address = remail_instance.remail3
+                    cate = remail_instance.category3
+                    
+                    return render(request,'mypage/mypage.html', {'add3':address,'ctgr3':cate})
+                else:
+                    address = 'none'
+                    return render(request,'mypage/mypage.html', {'add3':address})
+                
+            if number == "4":
+                if remail_instance.remail4:
+                    address = remail_instance.remail4
+                    cate = remail_instance.category4
+                    
+                    return render(request,'mypage/mypage.html', {'add4':address,'ctgr4':cate})
+                else:
+                    address = 'none'
+                    return render(request,'mypage/mypage.html', {'add4':address})
+            if number == "5":
+                if remail_instance.remail5:
+                    address = remail_instance.remail5
+                    cate = remail_instance.category5
+                    
+                    return render(request,'mypage/mypage.html', {'add5':address,'ctgr5':cate})
+                else:
+                    address = 'none'
+                    return render(request,'mypage/mypage.html', {'add5':address})
+        except:
+            return render(request,'mypage/mypage.html')
 
 
 def check_unique_remails(input_remail):

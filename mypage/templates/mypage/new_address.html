@@ -1,8 +1,16 @@
 {% extends 'mypage/mypage.html' %}
 {% block mypage_section %}
+<!-- Nav -->
+<nav style="float: left;">
+   <ul id="table">
+      <li><a href="http://127.0.0.1:8000/mypage">계정 관리</a></li>
+      <li><a href="http://127.0.0.1:8000/mypage/new_address" style="background-color: rgb(100, 175, 138);">remail 생성</a></li>
+      <li><a href="http://127.0.0.1:8000/mypage/polls">설문조사</a></li>
+   </ul>
+</nav>
 <!-- Section -->
-<section class="newadd">
-   <div id="list">
+<section>
+   <div id="newadd">
       <h2>Re-mail 주소 생성</h2>
       <h3>example123@re-mail.link 형식으로 입력하세요<h3>
       {% if message == "already_exists" %}
