@@ -65,8 +65,9 @@ header {
 
 nav 
 {   
+    list-style-type: none;
     height:100%;
-    width:15%;
+    width:261px;
     float: left;
     background: #E8E8E8;
     overflow: auto;
@@ -91,9 +92,8 @@ section{
 
 nav ul li {
     list-style: none;
-    margin:10px;
+    margin:0px;
     border:10px;
-    float:left;
 }
 
 #logo > a {
@@ -106,16 +106,19 @@ nav ul li {
 }
 
 #table a {
-    font-family: 'Noto Sans KR', sans-serif;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
     color: black;
-    text-align: left;
-    font-size: 23px;
+    font-size: 16px;
     font-style: normal;
+    font-weight: 550;
     line-height: normal;
 }
 
 #table a:hover {
-    color: #19722D;
+    background: rgba(130, 174, 140, 0.40);
+    color: #000;
 }
 
 /*section*/

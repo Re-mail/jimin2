@@ -44,23 +44,56 @@
 			</div>
 			<hr>
 			<div id="list">
-				<div id="listbox">
-					<span>업무용</span> 
-					<span>메일주소1@re-mail.link</span> 
-					<button type="button">삭제</button>
-				</div>
-				<div id="listbox">
-					<span>OTT</span> 
-					<span>메일주소2@re-mail.link</span> 
-					<button type="button">삭제</button>
-				</div>
-				<div id="listbox">
-					<span>OTT</span> 
-					<span>메일주소3@re-mail.link</span> 
-					<button type="button">삭제</button>
-				</div>
-				<br><br>
-				<button id="add" type="button" onClick="location.href='new_address'">메일 주소 생성</button>
+				<h2>Re-mail 주소 목록</h2>
+				<ul>
+					<li>
+						<form method="POST" action="{% url 'new_address' %}">
+							{% csrf_token %}
+							<input type="hidden" name="number" value="1">
+							<button type="submit"><a href ="http://127.0.0.1:8000/mypage/new_address/">추가</a></button>
+							<button type="button">삭제</button>
+							{{ request.user.remail1 }} ({{ request.user.category1 }})
+						</form>
+						
+						<form method="POST" action="{% url 'new_address' %}">
+							{% csrf_token %}
+							<input type="hidden" name="number" value="2">
+							<button type="submit"><a href ="http://127.0.0.1:8000/mypage/new_address/">추가</a></button>
+							<button type="button">삭제</button>
+							{{ request.user.remail2 }} ({{ request.user.category2 }})
+						</form>
+
+						<form method="POST" action="{% url 'new_address' %}">
+							{% csrf_token %}
+							<input type="hidden" name="number" value="3">
+							<button type="submit"><a href ="http://127.0.0.1:8000/mypage/new_address/">추가</a></button>
+							<button type="button">삭제</button>
+							{{ request.user.remail3 }} ({{ request.user.category3 }})
+						</form>
+
+						<form method="POST" action="{% url 'new_address' %}">
+							{% csrf_token %}
+							<input type="hidden" name="number" value="4">
+							<button type="submit"><a href ="http://127.0.0.1:8000/mypage/new_address/">추가</a></button>
+							<button type="button">삭제</button>
+							{{ request.user.remail4 }} ({{ request.user.category4 }})
+						</form>
+
+						<form method="POST" action="{% url 'new_address' %}">
+							{% csrf_token %}
+							<input type="hidden" name="number" value="5">
+							<button type="submit"><a href ="http://127.0.0.1:8000/mypage/new_address/">추가</a></button>
+							<button type="button">삭제</button>
+							{{ request.user.remail5 }} ({{ request.user.category5 }})
+						</form>
+
+
+					{% comment %} {% empty %}
+					<li>저장된 Re-mail 주소가 없습니다.</li>
+					{% endfor %} {% endcomment %}
+				</ul>
+				
+				<button id="add" type="submit" onClick="location.href='new_address'">메일 주소 생성</button>
 			</div>
 			
 		</section>

@@ -2,28 +2,27 @@
 {% block mypage_section %}
 <!-- Section -->
 <section class="newadd">
-	<button type="submit">메일 주소 생성</button>
+	
 
 	<form method="post" action="{% url 'new_address' %}">
 		{% csrf_token %}
 		<div>
+			<button type="submit">메일 주소 생성</button>
 			<label for="remail">Re-mail 주소</label>
-			<input type="text" name="remail_address" id="remail_address">
+			<input type="text" name="input_remail" id="input_remail">
 			<button id="random" type="button">랜덤 생성</button>
 			<button id="check" type="button">중복 확인</button>
 			<br>
-			{% if address == "available" %}
+			{% comment %} {% if address == "available" %}
 				<span id="checkword">사용 가능한 임시 메일 주소입니다.</span>
 			{% endif %}
 			{% if adress == "over_number" %}
 				<span id="checkword">임시 메일 생성 개수를 초과했습니다.</span>
-			{% endif %}
+			{% endif %} {% endcomment %}
 		</div>
 		<div>
 			<label for="category">카테고리:</label>
 			<input type="text" name="remail_category" id="remail_category">
-			<br>
-			<button id="save" type="button">확인</button>
 		</div>
 	</form>
 </section>
