@@ -2,28 +2,80 @@
 {% block mypage_section %}
 <!-- Section -->
 <section class="newadd">
-	
-
-	<form method="post" action="{% url 'new_address' %}">
-		{% csrf_token %}
-		<div>
-			<button type="submit">메일 주소 생성</button>
-			<label for="remail">Re-mail 주소</label>
-			<input type="text" name="input_remail" id="input_remail">
-			<button id="random" type="button">랜덤 생성</button>
-			<button id="check" type="button">중복 확인</button>
-			<br>
-			{% comment %} {% if address == "available" %}
-				<span id="checkword">사용 가능한 임시 메일 주소입니다.</span>
-			{% endif %}
-			{% if adress == "over_number" %}
-				<span id="checkword">임시 메일 생성 개수를 초과했습니다.</span>
-			{% endif %} {% endcomment %}
-		</div>
-		<div>
-			<label for="category">카테고리:</label>
-			<input type="text" name="remail_category" id="remail_category">
-		</div>
-	</form>
+   <div id="list">
+      <h2>Re-mail 주소 생성</h2>
+      <h3>example123@re-mail.link 형식으로 입력하세요<h3>
+      {% if message == "already_exists" %}
+         <strong>Fail!</strong> 해당 번호의 Re-mail 주소가 이미 존재합니다. <br> 다른 번호의 Re-mail 주소를 생성하세요.
+        {% endif %}
+      {% if message == "overlap_address" %}
+         <strong>Fail!</strong> 사용할 수 없는 Re-mail 주소입니다.
+        {% endif %}
+      {% if message == "invalid" %}
+         <strong>Fail!</strong> 입력한 형식이 적절하지 않습니다.
+        {% endif %}
+      
+      <br><br>
+      <form method="POST" action="{% url 'new_address' %}">
+         {% csrf_token %}
+         <input type="hidden" name="number" id="number" value="1">
+         <label>Re-mail 주소 1 : </label>
+         <input type="text" name="input_remail" id="input_remail" placeholder="example@re-mail.link">
+         <button id="random" type="button">랜덤 생성</button>
+         <br>
+         <label for="category">카테고리 : </label>
+         <input type="text" name="input_category" id="input_category">
+         <button type="submit">메일 주소 생성</button>
+      </form>
+      <br>
+      <form method="POST" action="{% url 'new_address' %}">
+         {% csrf_token %}
+         <input type="hidden" name="number" id="number" value="2">
+         <label>Re-mail 주소 2 : </label>
+         <input type="text" name="input_remail" id="input_remail" placeholder="example@re-mail.link">
+         <button id="random" type="button">랜덤 생성</button>
+         <br>
+         <label for="category">카테고리 : </label>
+         <input type="text" name="input_category" id="input_category">
+         <button type="submit">메일 주소 생성</button>
+      </form>
+      <br>
+      <form method="POST" action="{% url 'new_address' %}">
+         {% csrf_token %}
+         <input type="hidden" name="number" id="number" value="3">
+         <label>Re-mail 주소 3 : </label>
+         <input type="text" name="input_remail" id="input_remail" placeholder="example@re-mail.link">
+         <button id="random" type="button">랜덤 생성</button>
+         <br>
+         <label for="category">카테고리 : </label>
+         <input type="text" name="input_category" id="input_category">
+         <button type="submit">메일 주소 생성</button>
+      </form>
+      <br>
+      <form method="POST" action="{% url 'new_address' %}">
+         {% csrf_token %}
+         <input type="hidden" name="number" id="number" value="4">
+         <label>Re-mail 주소 4 : </label>
+         <input type="text" name="input_remail" id="input_remail" placeholder="example@re-mail.link">
+         <button id="random" type="button">랜덤 생성</button>
+         <br>
+         <label for="category">카테고리 : </label>
+         <input type="text" name="input_category" id="input_category">
+         <button type="submit">메일 주소 생성</button>
+      </form>
+      <br>
+      <form method="POST" action="{% url 'new_address' %}">
+         {% csrf_token %}
+         <input type="hidden" name="number" id="number"  value="5">
+         <label>Re-mail 주소 5 : </label>
+         <input type="text" name="input_remail" id="input_remail" placeholder="example@re-mail.link">
+         <button id="random" type="button">랜덤 생성</button>
+         <br>
+         <label for="category">카테고리 : </label>
+         <input type="text" name="input_category" id="input_category">
+         <button type="submit">메일 주소 생성</button>
+      </form>
+      {% comment %} <button id="add" type="submit" onClick="location.href='new_address'">메일 주소 생성</button> {% endcomment %}
+   </div>
 </section>
 {% endblock mypage_section %}
