@@ -16,16 +16,6 @@ body{
       height: 100%;
       font-family: 'KoPubWorldDotum';
       align-items: center;
-      /*
-      position: relative;
-      overflow: hidden;
-      margin-left:20px;
-      
-      font-size: 50px;
-      font-style: normal;
-      font-weight: 400;
-      color: #19722D;
-      */
 }
 
 .section{
@@ -45,16 +35,6 @@ body{
    text-align: center;
    font-family: Moul;
    font-size:80px;
-
-   /*
-   
-   left: 454px;
-   top: 229px;
-   font-size:20px;
-   font-weight: 100;
-   width: 358px;
-   height: 87px;
-   */
 }
 
 .re-mail > a {
@@ -67,19 +47,8 @@ body{
    font-size:28px;
    text-align: center;
    background-color: #E8E8E8;
-   
    width:150px;
    height:50px;
-   /*
-    width: 320px;
-    height: 56px;
-    position: absolute;
-    background-color: #d3d3d3;
-    margin-top: 20px;
-    text-align: center;
-    left: 485px;
-    top: 438px;
-   */
    
    }
 
@@ -100,8 +69,6 @@ body{
    text-align: center;
    background-color: white;
 }
-
-
 
 /* 다른 html? */
 

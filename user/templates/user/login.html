@@ -1,29 +1,38 @@
-{% extends 'home/index.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="kr">
+    <head>
+        <meta charset="UTF-8">
+        <title>home</title>
+        <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    </head>
+    <body>
+        <div class="section" >
+            <div class="re-mail"><a href="/">Re-mail</a></div>
+            {% block contents %}
+            <main class="form-signin w-100 m-auto">
+                <form action="{% url 'user:login' %}" method="post">
+                    {% csrf_token %}
 
-
-    {% block contents %}
-        <main class="form-signin w-100 m-auto">
-            <form action="{% url 'user:login' %}" method="post">
-                {% csrf_token %}
-                {% comment %} {% include 'form_errors.html' %} {% endcomment %} 
-                <h1 class="h3 mb-3 fw-norma">로그인</h1>
-                <div class="form-floating">
-                    <label for="email">이메일</label>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="name@example.com">
-                </div>
-
-                <div class="form-floating">
-                    <label for="password">비밀번호</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                </div>
-                {% if error == "error_message" %}
-                    <div class="alert alert-danger">
-                        <strong>Fail!</strong> 이메일 또는 비밀번호가 잘못되었습니다.
+                    <div class="form-floating">
+                        <label for="email">이메일  </label>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="name@example.com">
                     </div>
-                {% endif %}
-                <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
-            </form>
-        </main>
 
-{% endblock contents %}
+                    <div class="form-floating">
+                        <label for="password">비밀번호</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    </div>
+                    {% if error == "error_message" %}
+                        <div class="alert alert-danger">
+                            <strong>Fail!</strong> 이메일 또는 비밀번호가 잘못되었습니다.
+                        </div>
+                    {% endif %}
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+                </form>
+            </main>
+            {% endblock contents %}
+        </div>
+    </body>
+</html>
 

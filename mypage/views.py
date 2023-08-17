@@ -1,9 +1,44 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from user.models import User
 from .models import Remail, Question, Choice
+from django.http.response import HttpResponseRedirect
+from django.urls import reverse
 
 def mypage(request):
-    return render(request,'mypage/mypage.html')
+    try:
+        user = request.user
+        remail_instance, created = Remail.objects.get_or_create(user=user)
+        
+        if remail_instance.remail1:
+            address1 = "none"
+        else:
+            address1 = remail_instance.remail1
+            
+        if remail_instance.remail2:
+            address2 = "none"
+        else:
+            address2 = remail_instance.remail2
+            
+        if remail_instance.remail3:
+            address3 = "none"
+        else:
+            address3 = remail_instance.remail3
+            
+        if remail_instance.remail4:
+            address4 = "none"
+        else:
+            address4 = remail_instance.remail4
+            
+        if remail_instance.remail5:
+            address5 = "none"
+        else:
+            address5 = remail_instance.remail5
+            
+        return render(request,'mypage/mypage.html', {'add1':address1})
+    
+    except:
+        return render(request,'mypage/mypage.html')
+
 
 def check_unique_remails(input_remail):
     if Remail.objects.filter(remail1=input_remail).exists() or \
@@ -19,7 +54,6 @@ def check_null(input):
         return True
     else : 
         return False
-   
     
 
 def new_address(request):
@@ -89,3 +123,19 @@ def polls(request):
 def detail(request,qid):
     choice = get_object_or_404(Question,id=qid)
     return render(request, 'mypage/detail.html',{'q':choice})
+
+def vote(request):
+    if request.method == 'GET':
+        return render(request, 'mypage/new_address.html')
+    
+    elif request.method == "POST":
+        vote_id = request.POST.get('question') #사용자가 선택한 질문 번호
+        c = get_object_or_404(Choice,id=vote_id)
+        
+        # c = Choice.objects.get_or_create(id=vote_id)
+        c.votes +=1
+        c.save()
+        return render(request, 'mypage/polls.html', {'message': "complete"})
+    
+    else:
+        return render(request, 'mypage/mypage.html')
