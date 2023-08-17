@@ -13,7 +13,7 @@ def mypage(request):
             user = request.user
             remail_instance, created = Remail.objects.get_or_create(user=user)
             number = request.POST.get('number')
-            
+            delete = request.POST.get('delete')
             if number == "1":
                 if remail_instance.remail1:
                     address = remail_instance.remail1
@@ -62,6 +62,45 @@ def mypage(request):
                 else:
                     address = 'none'
                     return render(request,'mypage/mypage.html', {'add5':address})
+                
+            if delete == "1":
+                if remail_instance.remail1:
+                    remail_instance.remail1 = None
+                    remail_instance.save()
+                    return render(request,'mypage/mypage.html', {'message':"save"})
+                else:
+                    return render(request,'mypage/mypage.html', {'message':"none"})
+                
+            if delete == "2":
+                if remail_instance.remail2:
+                    remail_instance.remail2 = None
+                    remail_instance.save()
+                    return render(request,'mypage/mypage.html', {'message':"save"})
+                else:
+                    return render(request,'mypage/mypage.html', {'message':"none"})
+            if delete == "3":
+                if remail_instance.remail3:
+                    remail_instance.remail3 = None
+                    remail_instance.save()
+                    return render(request,'mypage/mypage.html', {'message':"save"})
+                else:
+                    return render(request,'mypage/mypage.html', {'message':"none"})
+            
+            if delete == "4":
+                if remail_instance.remail4:
+                    remail_instance.remail4 = None
+                    remail_instance.save()
+                    return render(request,'mypage/mypage.html', {'message':"save"})
+                else:
+                    return render(request,'mypage/mypage.html', {'message':"none"})
+            if delete == "5":
+                if remail_instance.remail5:
+                    remail_instance.remail5 = None
+                    remail_instance.save()
+                    return render(request,'mypage/mypage.html', {'message':"save"})
+                else:
+                    return render(request,'mypage/mypage.html', {'message':"none"})
+                
         except:
             return render(request,'mypage/mypage.html')
 
@@ -135,12 +174,13 @@ def new_address(request):
                             return  render(request, "mypage/new_address.html", {"message": "already_exists"})
                 else:
                     return render(request, 'mypage/new_address.html', {'message': "overlap_address"})
+            else:
+                return render(request, 'mypage/new_address.html', {'message': "invalid"})   
         except:
               return render(request, 'mypage/new_address.html', {'message': "overlap_address"})
 
-        else:
-            return render(request, 'mypage/new_address.html', {'message': "invalid"})
     return render(request, 'mypage/mypage.html')
+
   
 def polls(request):
     question = Question.objects.all()

@@ -9,6 +9,7 @@ a {
     text-decoration-line:none;
     text-decoration: none;
     text-align:left;
+    color:black;
 }
 
 header {
@@ -157,10 +158,24 @@ nav ul li {
     margin-bottom: 10%;
 }
 #user {
-    display:inline-block;
+    display:flex;
     align-items: center;
+    text-align:center;
     /*position: relative;*/
     padding-left:50px;
+    justify-content: center;
+}
+
+#poll h3 a {
+    color: #19722D;
+}
+
+#poll h3 a:hover {
+    color: #19722D;
+}
+
+#poll h3 a:link {
+    color: #19722D;
 }
 
 #user > img {
@@ -186,7 +201,12 @@ nav ul li {
     font-style: normal;
     line-height: normal;
 }
-
+#info {
+    display:inline;
+    padding-bottom:20px;
+    width: 180px;
+    height: 200px;
+}
 #info > span {
     color: #777575;
     text-align: center;
@@ -204,6 +224,9 @@ hr {
     border:10px;
     border: 1px solid #4a4a4a;
 }
+
+/* 여기부터 */
+
 #list{
     width: 500px;
     height: 300px;
@@ -211,23 +234,48 @@ hr {
     align-items: center;
     text-align:center;
     justify-content: center;
+    
 }
 
-form {
+#list > strong {
+    font-family: 'KoPubWorldDotum';
+    font-style:bold;
+}
+
+#group {
     display:block;
+    margin-bottom:20px;
+    
+}
+
+#group > form {
+    display:inline;
     margin-bottom:30px;
+    font-family: 'KoPubWorldDotum';
+    font-style:bold;
 }
-form > button{
+
+#group form  button{
+    padding:5px;
+    padding-left:10px;
+    padding-right:10px;
     display:inline-block;
+    font-family: 'KoPubWorldDotum';
+    font-style:bold;
+    border-radius: 10px;
+    background: #46A15A;
+    color:white;
+    border: none;
 }
-form > div {
+#group form  div {
     display:inline
     
 }
-form > span {
+#group form  span {
     width: 60px;
     height:10px;
 }
+
 #newadd > h2{
     display:block;
 }
@@ -236,4 +284,15 @@ form > span {
 }
 #newadd > form{
     display:block;
+}
+
+#detail_submit{
+    margin:10px;
+    border-radius: 10px;
+    background: #46A15A;
+    color:white;
+    border: none;
+    padding:5px;
+    padding-left:10px;
+    padding-right:10px;
 }
